@@ -1,5 +1,5 @@
 # Ejercicio práctico de Angular
-A partir del proyecto del siguiente REPOSITORIO debes realizar lo siguiente:
+A partir del proyecto del siguiente [REPOSITORIO](https://github.com/joadelvia/pokemon) debes realizar lo siguiente:
 
 - Vamos a estructurar el proyecto de forma modular, para ello crearemos un módulo pokemon que contendrá un componente list que será la tabla que muestra los pokemon. También tendrá un componente editPokemon que nos permitirá editar pokemons y contendrá el formulario para editar pokemons.
 - Además crearemos un módulo shared que contendrá el componente search.
