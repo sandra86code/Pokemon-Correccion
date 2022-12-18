@@ -1,27 +1,13 @@
-# Pokemons
+# Ejercicio práctico de Angular
+A partir del proyecto del siguiente REPOSITORIO debes realizar lo siguiente:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Vamos a estructurar el proyecto de forma modular, para ello crearemos un módulo pokemon que contendrá un componente list que será la tabla que muestra los pokemon. También tendrá un componente editPokemon que nos permitirá editar pokemons y contendrá el formulario para editar pokemons.
+- Además crearemos un módulo shared que contendrá el componente search.
+- Por último crearemos un módulo main que contendrá el componente home.
+- El componente home contendrá el botón searh, el componente searh y el componente list. El componente search estará oculto y solo se mostrará cuando pulsemos el botón search y se volverá a ocultar al volver a pulsarlo. El componente list de incio mostrará el listado completo de pokemons y cuando introduzcamos algo en buscar y pulsemos intro mostrará solo los pokemons cuyo nombre coincida. PODER TOTAL será la suma de todos los poderes de la celda anterior.
+- El proyecto constará de las siguientes rutas:
+	- Raíz: mostrará el componente home.
+	- /edit/+parámetro: Esta ruta recibe un parámetro llamado pokemon y muestra el componente editPokemon.
+	- Cualquier otra ruta redirige a la ruta raíz.
+- Los pokemons los obtendremos de un servidor json-server que levantaremos a partir del fichero pokemon.json adjunto.
+- El componente editPokemon nos permitirá editar el pokemon seleccionado. Esto será posible a través del enlace al final de cada pokemon en la tabla donde se muestran todos. La edición me permitirá editar solo los campos que se ven en el proyecto inicial.
