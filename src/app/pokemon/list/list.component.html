@@ -1,0 +1,26 @@
+<div class="row">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Power</th>
+          <th scope="col">Total Power</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pokemon of pokemons">
+          <td>{{pokemon.name.english}}</td>
+          <td>{{pokemon.type.join(" ")}}</td>
+          <td>HP: {{pokemon.base.HP}} Attack: {{pokemon.base.Attack}} Defense: {{pokemon.base.Defense}} 
+            Speed: {{pokemon.base.Speed}}</td>
+          <td>PODER TOTAL</td>
+          <td><a [routerLink]="['/edit',pokemon.id]">Editar</a></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
