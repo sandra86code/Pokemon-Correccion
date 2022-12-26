@@ -6,8 +6,8 @@ import { EditPokemonComponent } from './pokemon/edit-pokemon/edit-pokemon.compon
 const routes: Routes = [
 
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'edit/:id', component: EditPokemonComponent},
-  { path: '**', component: HomeComponent }
+  { path: 'edit/:pokemon', component: EditPokemonComponent},
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

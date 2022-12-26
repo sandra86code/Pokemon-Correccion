@@ -1,4 +1,15 @@
-<app-search (onNewFilterNom)="searchPokemons($event)"></app-search>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <button type="button" (click)="hide()" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="showSearch">
+        <app-search (onNewFilterNom)="searchPokemons($event)"></app-search>
+    </div>
+    <div class="row">
+        <app-list [pokemons]="pokemons"></app-list>
+    </div>
+</div>
 
 
-<app-list [pokemons]="pokemons"></app-list>

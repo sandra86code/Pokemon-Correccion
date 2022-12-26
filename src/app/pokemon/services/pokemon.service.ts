@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pokemon } from '../interfaces/pokemon';
@@ -13,19 +13,26 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  searchPokemons(query: string): Observable<Pokemon[]>  {
-
-    return this.http.get<Pokemon[]>(`${this._url}?q=${query}`)
+  searchPokemons(query: string = ''): Observable<Pokemon[]>  {
+    if(query === '') {
+      return this.http.get<Pokemon[]>(this._url)
+    }else {
+      return this.http.get<Pokemon[]>(`${this._url}?q=${query}`)
+    }
   }
 
   searchPokemonById(id: number): Observable<Pokemon>  {
     return this.http.get<Pokemon>(`${this._url}/${id}`)
   }
 
-  updatePokemon(id: number, pokemon: Pokemon): Observable<Pokemon>  {
-    const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(pokemon);
-    return this.http.put<Pokemon>(`${this._url}/${id}`, body,{'headers':headers})
+  updatePokemon(pokemon: Pokemon): void  {
+    const headers: HttpHeaders = new HttpHeaders()
+    .set('content-type', 'application/json')
+    
+    this.http.put<Pokemon>(`${this._url}/${pokemon.id}`, pokemon,{headers})
+    .subscribe({
+      next: (resp) => console.log(resp)
+    })
   }
 }
 

@@ -8,25 +8,27 @@ import { PokemonService } from '../../pokemon/services/pokemon.service';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons!: Pokemon[];
+  pokemons: Pokemon[] = [];
+  showSearch: boolean = false;
 
   constructor(private pokemonService : PokemonService) { }
 
   ngOnInit(): void {
+    this.pokemonService.searchPokemons()
+    .subscribe( {
+      next: (resp)=>this.pokemons = resp
+    })
   }
 
+  hide(): void {
+    this.showSearch = !this.showSearch;
+  }
+
+
   searchPokemons (query: string): void {
-    console.log(query)
     this.pokemonService.searchPokemons(query)
     .subscribe({
-      next: (resp) => {
-        this.pokemons = resp
-        console.log(this.pokemons)
-      },
-      error: (err) => {
-        this.pokemons = []
-        console.log(this.pokemons)
-      }
+      next: (resp) => this.pokemons = resp
     })
   }
 }

@@ -17,6 +17,5 @@ export class SearchComponent implements OnInit {
 
   searchPokemons(): void {
     this.onNewFilterNom.emit(this.filterNom);
-    this.filterNom="";
   }
 }

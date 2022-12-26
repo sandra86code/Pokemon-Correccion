@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pokemon } from '../interfaces/pokemon';
 import { PokemonService } from '../services/pokemon.service';
@@ -9,28 +9,28 @@ import { PokemonService } from '../services/pokemon.service';
   templateUrl: './edit-pokemon.component.html'
 })
 export class EditPokemonComponent implements OnInit {
-
-
-  constructor(private route: ActivatedRoute, private pokemonService : PokemonService) { }
-
+  
   pokemon!: Pokemon;
-  myPokemon!: {id: number};
-  paramsSubscription!: Subscription;
-  
-  
+  disabled: boolean = true;
 
-  ngOnInit(): void {
-    this.myPokemon = {
-      id: this.route.snapshot.params['id'],
-    };
-    this.pokemonService.searchPokemonById(this.myPokemon.id)
-    .subscribe(data => {
-      this.pokemon=data;
+  constructor(private route: ActivatedRoute, private pokemonService : PokemonService,
+    private router: Router) { }
+
+  
+    ngOnInit(): void {
+    this.pokemonService.searchPokemonById(this.route.snapshot.params['pokemon'])
+    .subscribe( {
+      next: (resp) => this.pokemon= resp
     });
 
   }
 
-  editPokemon() {
-    this.pokemonService.updatePokemon(this.pokemon.id, this.pokemon);
+  editPokemon(): void {
+    this.pokemonService.updatePokemon(this.pokemon);
+    this.router.navigate(['/']);
+  }
+
+  enableSave(): void {
+    this.disabled = false;
   }
 }

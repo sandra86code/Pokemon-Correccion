@@ -13,12 +13,12 @@
         "Poison"
       ],
       "base": {
-        "HP": 40,
+        "HP": 42,
         "Attack": 49,
         "Defense": 49,
         "Sp. Attack": 65,
         "Sp. Defense": 65,
-        "Speed": 45
+        "Speed": 46
       }
     },
     {
